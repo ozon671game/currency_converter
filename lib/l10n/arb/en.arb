@@ -1,0 +1,10 @@
+{
+  "@@locale": "en",
+  "currency_converter_title": "Currency converter",
+  "choose_currency_title": "Choose a currency",
+  "cancel_btn": "Cancel",
+  "ok_btn": "OK",
+  "you_send_txt": "You send",
+  "they_get_txt": "They get",
+  "a": "a"
+}
