@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../../../core/constant/endpoints.dart';
-import '../../dto/daily_response/daily_response.dart';
 
 part 'daily_data_source.g.dart';
 

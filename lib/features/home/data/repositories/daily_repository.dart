@@ -1,9 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
-
-import '../../../../core/constant/endpoints.dart';
-import '../../../../utils/typedef.dart';
+import '../../../../core/utils/typedef.dart';
 import '../data_sources/daily/daily_data_source.dart';
 import '../dto/daily_response/daily_response.dart';
 

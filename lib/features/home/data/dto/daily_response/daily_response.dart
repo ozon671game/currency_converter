@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../utils/typedef.dart';
+import '../../../../../core/utils/typedef.dart';
 import '../valute/valute.dart';
 
 part 'daily_response.g.dart';

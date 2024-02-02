@@ -29,19 +29,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final youCurrencyId = state.youCurrency?.id;
     final theyCurrencyId = state.theyCurrency?.id;
     if (youValue == null || youCurrencyId == null || theyCurrencyId == null) {
+      emit(state.withError('Fill in all the fields'));
+      emit(state.withoutError());
       return;
     }
 
-    print('-------------');
-    final theyValue = await _homeService.getPrice(
-      youValue: youValue,
-      youCurrencyId: youCurrencyId,
-      theyCurrencyId: theyCurrencyId,
-    );
-
-    print(theyValue);
-
-    emit(state.copyWith(theyValue: theyValue));
+    try {
+      final theyValue = await _homeService.getTheyValue(
+        youValue: youValue,
+        youCurrencyId: youCurrencyId,
+        theyCurrencyId: theyCurrencyId,
+      );
+      emit(state.copyWith(theyValue: theyValue));
+    } catch (e) {
+      emit(state.withError(e.toString()));
+      emit(state.withoutError());
+    }
   }
 
   void _setYouValue(
@@ -85,7 +88,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.withLoading());
 
     try {
-      final currenciesList = await _homeService.getDailyFromServer();
+      final currenciesList = await _homeService.getCurrenciesVM();
 
       emit(state.copyWith(currenciesList: currenciesList));
       emit(state.withoutLoading());
