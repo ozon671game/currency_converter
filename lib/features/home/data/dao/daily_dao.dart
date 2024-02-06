@@ -22,7 +22,11 @@ class DailyDAO {
     if (_isar == null) {
       await initDB();
     }
-    await _isar!.currencys.where().deleteAll();
+    try {
+      await _isar!.currencys.where().deleteAll();
+    } catch (e) {
+      //
+    }
 
     await _isar!.writeTxn(() async {
       await _isar!.currencys.putAll(list);

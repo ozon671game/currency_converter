@@ -93,7 +93,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(currenciesList: currenciesList));
       emit(state.withoutLoading());
     } catch (e) {
-      // ignore
+      emit(state.withError(e.toString()));
+      emit(state.withoutError());
     }
   }
 }

@@ -57,7 +57,12 @@ class HomeService {
           ),
         )
         .toList();
-    await _dailyDao.saveToDB(currenciesForDB);
+
+    try {
+      await _dailyDao.saveToDB(currenciesForDB);
+    } catch (e) {
+      throw Exception('Saving to db error');
+    }
 
     final currenciesVMList = currenciesForDB
         .map(
